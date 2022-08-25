@@ -1,7 +1,7 @@
 <img align="right" alt="RegrasRobot Logo" width="30%" height="auto" src="https://github.com/GabrielRF/RegrasRobot/blob/main/utils/logo.jpg?raw=true">
 
 # RegrasRobot
-
+[![Deploy](https://github.com/GabrielRF/RegrasRobot/actions/workflows/deploy.yml/badge.svg)](https://github.com/GabrielRF/RegrasRobot/actions/workflows/deploy.yml)
 ## Sobre
 
 Este é um bot para ser usado em grupos públicos ou privados do Telegram que possuem a opção de aprovar a entrada de novos membros ligada.
