@@ -1,4 +1,4 @@
-<img align="right" alt="RegrasRobot Logo" width="30%" height="auto" src="https://github.com/GabrielRF/RegrasRobot/blob/main/logo.jpg?raw=true">
+<img align="right" alt="RegrasRobot Logo" width="30%" height="auto" src="https://github.com/GabrielRF/RegrasRobot/blob/main/utils/logo.jpg?raw=true">
 
 # RegrasRobot
 
