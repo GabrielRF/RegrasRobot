@@ -277,6 +277,7 @@ def send_rules(message):
             parse_mode='HTML'
         )
 
+@bot.message_handler(content_types=['document', 'photo', 'animation'])
 @bot.message_handler(func=lambda m: True)
 def message_to_bot(message):
     if message.chat.id < 0:
