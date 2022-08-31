@@ -136,7 +136,7 @@ def accept(query):
             show_alert=False)
         data = select_from_table(query.data)
         bot.send_message(query.from_user.id, msgs.popup_accept,
-            reply_markup=button)
+            reply_markup=button, parse_mode='HTML')
     except:
         pass
     try:
@@ -199,7 +199,9 @@ def set_here(message):
             parse_mode='HTML'
         )
     elif message.chat.type != 'supergroup':
-        bot.send_message(message.chat.id, msgs.not_supergroup)
+        bot.send_message(
+            message.chat.id, msgs.not_supergroup, parse_mode='HTML'
+        )
         return
     if message.chat.id > 0: return
     bot_admin = False
@@ -224,7 +226,7 @@ def set_here(message):
             bot.delete_message(message.chat.id, message.id)
             bot_admin = True
         except telebot.apihelper.ApiTelegramException:
-            bot.reply_to(message, msgs.not_admin)
+            bot.reply_to(message, msgs.not_admin, parse_mode='HTML')
             pass
     if bot_admin and bot_started:
         bot.delete_my_commands(
@@ -290,7 +292,9 @@ def message_to_bot(message):
     r = redis.Redis(host='localhost', port=6379, db=0)
     chat_id = r.get(message.from_user.id)
     if not chat_id:
-        bot.reply_to(message, msgs.start.format(message.from_user.first_name))
+        bot.reply_to(
+            message, msgs.start.format(message.from_user.first_name),
+            parse_mode='HTML')
     else:
         chat_id = chat_id.decode('utf-8')
         if not select_from_table(chat_id):
@@ -301,7 +305,7 @@ def message_to_bot(message):
                 WHERE chat_id = {chat_id}'''
             update_database(chat_id, query)
         r.delete(message.from_user.id)
-        bot.reply_to(message, msgs.saved_rules)
+        bot.reply_to(message, msgs.saved_rules, parse_mode='HTML')
         bot.set_my_commands([
             telebot.types.BotCommand('regras', 'Regras do grupo')
         ], scope=types.BotCommandScopeChat(f'-{chat_id}'))
