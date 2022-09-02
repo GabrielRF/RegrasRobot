@@ -186,9 +186,13 @@ def start(message):
             )
     else:
         bot.send_chat_action(message.chat.id, 'typing')
+        button = types.InlineKeyboardMarkup()
+        btn = types.InlineKeyboardButton(msgs.btn_blog,
+            url=f'https://blog.gabrf.com/posts/RegrasRobot/')
+        button.row(btn)
         bot.send_message(message.from_user.id,
             msgs.start.format(message.from_user.first_name),
-            parse_mode='HTML'
+            parse_mode='HTML', reply_markup=button
         )
 
 @bot.message_handler(commands=['set_here', 'set_rules'])
