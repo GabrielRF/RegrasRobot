@@ -102,8 +102,8 @@ def on_join(message):
                 str(msg.id)
             ]
         )
-    except:
-        bot.send_message(message.chat.id, msgs.set_rules, parse_mode='HTML')
+    except Exception as e:
+        print(e)
 
 
 @bot.callback_query_handler(lambda q: q.data == 'no')
