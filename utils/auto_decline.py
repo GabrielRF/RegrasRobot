@@ -2,7 +2,7 @@ import sys
 import telebot
 import time
 
-time.sleep(120)
+time.sleep(300)
 
 TOKEN = open('utils/token.conf', 'r').read().strip()
 
