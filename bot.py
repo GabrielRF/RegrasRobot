@@ -249,18 +249,13 @@ def set_here(message):
 def send_rules(message):
     if message.chat.id > 0: return
     try:
-        bot.delete_message(message.chat.id, message.id)
-        data = select_from_table(message.chat.id)
-    except:
-        return
-    try:
         bot.copy_message(message.from_user.id, data[2], data[3])
     except:
         button = types.InlineKeyboardMarkup()
         btn = types.InlineKeyboardButton(msgs.btn_rules,
             url=f'https://t.me/RegrasRobot?start={message.chat.id}')
         button.row(btn)
-        msg = bot.send_message(message.chat.id,
+        msg = bot.reply_to(message,
             msgs.click_rules.format(message.from_user.id),
             parse_mode='HTML', reply_markup=button
         )
@@ -270,6 +265,11 @@ def send_rules(message):
             str(message.chat.id),
             str(msg.id)
         ])
+    try:
+        bot.delete_message(message.chat.id, message.id)
+        data = select_from_table(message.chat.id)
+    except:
+        return
 
 
 @bot.message_handler(commands=['pix'])
