@@ -126,9 +126,10 @@ def refuse(query):
 @bot.callback_query_handler(func=lambda q:True)
 def accept(query):
     button = types.InlineKeyboardMarkup()
-    chat_id = query.data.replace('-100', '')
+    chat_id = query.data
+    invite_link = bot.get_chat(chat_id).invite_link
     btn_group = types.InlineKeyboardButton(msgs.btn_group,
-        url=f'https://t.me/c/{chat_id}/9999999')
+        url=f'{invite_link}')
     button.row(btn_group)
     try:
         bot.approve_chat_join_request(query.data, query.from_user.id)
@@ -248,6 +249,11 @@ def set_here(message):
 @bot.message_handler(commands=['rules', 'regras'])
 def send_rules(message):
     if message.chat.id > 0: return
+    try:
+        data = select_from_table(message.chat.id)
+        bot.delete_message(message.chat.id, message.id)
+    except:
+        pass
     try:
         bot.copy_message(message.from_user.id, data[2], data[3])
     except:
