@@ -251,7 +251,6 @@ def send_rules(message):
     if message.chat.id > 0: return
     try:
         data = select_from_table(message.chat.id)
-        bot.delete_message(message.chat.id, message.id)
     except:
         pass
     try:
@@ -261,9 +260,10 @@ def send_rules(message):
         btn = types.InlineKeyboardButton(msgs.btn_rules,
             url=f'https://t.me/RegrasRobot?start={message.chat.id}')
         button.row(btn)
-        msg = bot.reply_to(message,
+        msg = bot.send_message(message.chat.id,
             msgs.click_rules.format(message.from_user.id),
-            parse_mode='HTML', reply_markup=button
+            parse_mode='HTML', reply_markup=button,
+            reply_to_message_id=message.id
         )
         subprocess.Popen([
             'python3',
