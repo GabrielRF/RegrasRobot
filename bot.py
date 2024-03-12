@@ -214,7 +214,7 @@ def set_here(message):
     if bot.get_chat_member(
             message.chat.id, 
             message.from_user.id
-        ).status == 'creator':
+        ).status in ['creator', 'administrator']:
         try:
             bot.send_chat_action(message.from_user.id, 'typing')
             bot_started = True
