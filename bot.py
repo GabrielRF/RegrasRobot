@@ -311,7 +311,7 @@ def message_to_bot(message):
             values = f'"{chat_id}", "{message.from_user.id}", "{message.id}"'
             insert_on_table(chat_id, values)
         else:
-            query = f'''SET rules_message_id = {message.id} 
+            query = f'''SET rules_message_id = {message.id}, owner_id = {message.from_user.id}
                 WHERE chat_id = {chat_id}'''
             update_database(chat_id, query)
         r.delete(message.from_user.id)
