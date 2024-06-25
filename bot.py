@@ -1,3 +1,4 @@
+import html
 import utils.msgs as msgs
 import random
 import redis
@@ -192,7 +193,7 @@ def start(message):
             url=f'https://blog.gabrf.com/posts/RegrasRobot/')
         button.row(btn)
         bot.send_message(message.from_user.id,
-            msgs.start.format(message.from_user.first_name),
+            msgs.start.format(html.escape(message.from_user.first_name)),
             parse_mode='HTML', reply_markup=button
         )
 
