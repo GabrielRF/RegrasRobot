@@ -1,2 +1,2 @@
-pyTelegramBotAPI==4.7.0
+pyTelegramBotAPI==4.21.0
 redis==3.5.3

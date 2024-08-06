@@ -1,4 +1,3 @@
-import html
 import utils.msgs as msgs
 import random
 import redis
@@ -193,7 +192,7 @@ def start(message):
             url=f'https://blog.gabrf.com/posts/RegrasRobot/')
         button.row(btn)
         bot.send_message(message.from_user.id,
-            msgs.start.format(html.escape(message.from_user.first_name)),
+            msgs.start.format(telebot.formatting.escape_html(message.from_user.first_name)),
             parse_mode='HTML', reply_markup=button
         )
 
@@ -201,7 +200,7 @@ def start(message):
 def set_here(message):
     if message.chat.type == 'private':
         bot.send_message(message.from_user.id, 
-            msgs.start.format(message.from_user.first_name),
+            msgs.start.format(telebot.formatting.escape_html(message.from_user.first_name)),
             parse_mode='HTML'
         )
     elif message.chat.type != 'supergroup':
@@ -222,8 +221,8 @@ def set_here(message):
         except telebot.apihelper.ApiTelegramException:
             name = message.from_user.username
             if not name:
-                name = f'''{message.from_user.first_name}
-                    {message.from_user.last_name}'''
+                name = f'''{telebot.formatting.escape_html(message.from_user.first_name)}
+                    {telebot.formatting.escape_html(message.from_user.last_name)}'''
             bot.reply_to(message,
                 msgs.not_started.format(message.from_user.id,
                 name), parse_mode='HTML'
@@ -304,7 +303,7 @@ def message_to_bot(message):
     chat_id = r.get(message.from_user.id)
     if not chat_id:
         bot.reply_to(
-            message, msgs.start.format(message.from_user.first_name),
+            message, msgs.start.format(telebot.formatting.escape_html(message.from_user.first_name)),
             parse_mode='HTML')
     else:
         chat_id = chat_id.decode('utf-8')
