@@ -191,6 +191,9 @@ def start(message):
         btn = types.InlineKeyboardButton(msgs.btn_blog,
             url=f'https://blog.gabrf.com/posts/RegrasRobot/')
         button.row(btn)
+        btn = types.InlineKeyboardButton(msgs.btn_contact,
+            url=f'https://chat.grf.xyz/RegrasRobot')
+        button.row(btn)
         bot.send_message(message.from_user.id,
             msgs.start.format(telebot.formatting.escape_html(message.from_user.first_name)),
             parse_mode='HTML', reply_markup=button

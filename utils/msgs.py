@@ -16,6 +16,7 @@ set_rules = 'ℹ️ Envie o comando /set_rules para definir as regras deste grup
 send_rules = '📋 Envie as regras em uma mensagem só.\nA mensagem pode conter formatação e até imagens.'
 saved_rules = '🗄 A mensagem com as regras foi salva com sucesso.'
 btn_blog = 'Mais informações 🧩'
+btn_contact = 'Entre em contato 🆘'
 btn_group = 'Abrir grupo 👥'
 btn_rules = '📋 Regras'
 click_rules = '<a href="tg://user?id={}">✅</a> <b>Regras Robot</b>\nClique abaixo para ver as regras.'
