@@ -92,7 +92,7 @@ def on_join(message):
         buttons, answer = create_buttons(message.chat.id)
         bot.copy_message(message.from_user.id, data[2], data[3])
         msg = bot.send_message(message.from_user.id,
-            msgs.choose_button.format(answer),
+            msgs.choose_button.format(message.from_user.id, answer),
             reply_markup=buttons, parse_mode='HTML'
         )
         subprocess.Popen(

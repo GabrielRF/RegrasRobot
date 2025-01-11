@@ -24,7 +24,7 @@ popup_accept = 'Entrada autorizada ✅'
 popup_deny = 'Entrada recusada ❌'
 donate_qrcode = 'AgACAgEAAxkBAAICK2MGlROIPquSOKdoZfibSFWBtBbeAAKOqzEbYekxRKO-qlkuuDKTAQADAgADeQADKQQ'
 donate_caption = 'Envie um pix para a chave <code>bots@grf.xyz</code>'
-choose_button = '✅ <b>RegrasRobot</b>\nPara confirmar que leu e entendeu as regras, clique no botão que melhor corresponde a\n"<code>{}</code>":'
+choose_button = '<a href="tg://user?id={}">✅</a> <b>RegrasRobot</b>\nPara confirmar que leu e entendeu as regras, clique no botão que melhor corresponde a\n"<code>{}</code>":'
 emoji_captcha = [
   '👓:Óculos',
   '🐝:Abelha',
